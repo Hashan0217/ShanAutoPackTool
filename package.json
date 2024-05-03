@@ -1,0 +1,80 @@
+{
+  "name": "autopacktool",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "electron/main.ts",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "electron:start": " concurrently -k \"vite \" \"cross-env IS_DEV=true electron . \"",
+    "electron:build.win": "electron-builder --win --dir"
+  },
+  "dependencies": {
+    "@types/node": "^20.12.5",
+    "element-plus": "^2.6.3",
+    "path": "^0.12.7",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "electron": "^23.0.0",
+    "electron-browser-storage": "^1.0.7",
+    "electron-builder": "^23.6.0",
+    "electron-packager": "^17.1.1",
+    "sass": "^1.74.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-electron": "^0.28.4",
+    "vue-tsc": "^2.0.6"
+  },
+  "build": {
+    "productName": "package",
+    "copyright": "",
+    "directories": {
+      "output": "release/"
+    },
+    "files": [
+      "dist",
+      "dist-electron",
+      "release"
+    ],
+    "mac": {
+      "artifactName": "${productName}_${version}.${ext}",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}_${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false,
+      "installerIcon": "./electron/induSec-logo.ico",
+      "uninstallerIcon": "./electron/induSec-logo.ico"
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://127.0.0.1:8080"
+      }
+    ],
+    "releaseInfo": {
+      "releaseNotes": "版本更新的具体内容"
+    }
+  }
+}
