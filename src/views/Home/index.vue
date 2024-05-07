@@ -9,7 +9,7 @@
         </div>
 
         <div class="fileSelection">
-            <!-- <FileSelection /> -->
+            <FileSelection selfType="file"  title="项目文件夹" text="请选择项目文件夹"/>
         </div>
 
     </div>
@@ -18,7 +18,9 @@
 <script lang="ts" setup>
 import Announcement from "@/components/Announcement/index.vue";
 import Tutorial from "@/components/Tutorial/index.vue";
-// import FileSelection from "@/components/FileSelection/index.vue";
+import FileSelection from "@/components/FileSelection/index.vue";
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -28,6 +30,11 @@ import Tutorial from "@/components/Tutorial/index.vue";
             width: 98%;
             margin: 20px auto;
             height: 300px;
+        }
+
+        .fileSelection{
+            margin-top: 50px;
+     
         }
     }
 

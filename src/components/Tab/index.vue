@@ -43,7 +43,7 @@
             path:'/onlinePackage'
         },
         {
-            title: '本地打包',
+            title: '离线打包',
             isActive: false,
             id: 4,
             path:'/offlinePackage'

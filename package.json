@@ -11,6 +11,7 @@
     "electron:build.win": "electron-builder --win --dir"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
     "@types/node": "^20.12.5",
     "element-plus": "^2.6.3",
     "path": "^0.12.7",
