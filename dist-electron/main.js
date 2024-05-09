@@ -1,6 +1,8 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const { join } = require("path");
+const getFilesPathFun = require("./filesFun/getFilesPath.ts");
 process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
+const preloadPath = join(__dirname, "preload.ts");
 const createWindow = () => {
   const win = new BrowserWindow({
     // 窗口图标
@@ -10,7 +12,7 @@ const createWindow = () => {
     webPreferences: {
       // contextIsolation: false,
       // nodeIntegration: true,
-      // preload: path.join(__dirname, 'preload.js')
+      preload: preloadPath
     }
   });
   if (process.env.VITE_DEV_SERVER_URL) {
@@ -22,6 +24,9 @@ const createWindow = () => {
 };
 app.whenReady().then(() => {
   createWindow();
+  ipcMain.handle("pick-folder", () => {
+    return getFilesPathFun();
+  });
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0)
       createWindow();
