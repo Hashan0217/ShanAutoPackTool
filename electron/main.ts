@@ -2,8 +2,8 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const { join } = require("path");
 
 
-const getFilesPathFun = require("./filesFun/getFilesPath.ts");
-const checkFileFun = require("./filesFun/checkFile.ts");
+const fileClassItem = require("./files/fileClass.ts");
+
 
 // 屏蔽安全警告
 // ectron Security Warning (Insecure Content-Security-Policy)
@@ -39,14 +39,14 @@ app.whenReady().then(() => {
   //监听渲染进程发送的消息
   //选择文件夹
   ipcMain.handle("pick-folder", () => {
-    return getFilesPathFun();
+    return fileClassItem.getFilesPath();
   });
 
  ipcMain.handle('check-config-file', (event, path) => {
   // 根据文件路径查询shanAutoConfig.json文件是否存在
   console.log("path", path);
   
-  return checkFileFun(path);
+  return fileClassItem.checkFile(path);
 });
 
 
