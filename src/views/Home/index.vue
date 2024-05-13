@@ -19,7 +19,14 @@
 import Announcement from "@/components/Announcement/index.vue";
 import Tutorial from "@/components/Tutorial/index.vue";
 import FileSelection from "@/components/FileSelection/index.vue";
+// import {checkConfigFile} from '@/utils/checkProjecaktConfig.ts'
+//     // localStorage.setItem('projectPath','D:/TEST')
+//     const checkConfig = async () => {
+//         const isok =  await checkConfigFile(window)
+//         console.log('isok:', isok);
+//     }
 
+//     checkConfig()
 
 </script>
 

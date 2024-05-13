@@ -2,6 +2,7 @@
 // 声明扩展 window 对象
 interface ElectronAPI {
     pickFolder: () => Promise<string>;
+    checkConfigFile: (projectPath:string) => Boolean;
   }
   
   declare global {

@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const { join } = require("path");
 const getFilesPathFun = require("./filesFun/getFilesPath.ts");
+const checkFileFun = require("./filesFun/checkFile.ts");
 process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 const preloadPath = join(__dirname, "preload.ts");
 const createWindow = () => {
@@ -26,6 +27,10 @@ app.whenReady().then(() => {
   createWindow();
   ipcMain.handle("pick-folder", () => {
     return getFilesPathFun();
+  });
+  ipcMain.handle("check-config-file", (event, path) => {
+    console.log("path", path);
+    return checkFileFun(path);
   });
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0)
