@@ -2,7 +2,8 @@
 // 声明扩展 window 对象
 interface ElectronAPI {
     pickFolder: () => Promise<string>;
-    checkConfigFile: (projectPath:string) => Boolean;
+    checkIsFlie: (projectPath:string) => Boolean;
+    writeContant: (name:string,data:Object) => Boolean;
   }
   
   declare global {
@@ -10,8 +11,8 @@ interface ElectronAPI {
       electronAPI: ElectronAPI;
     }
     interface saveConfigFile{
-      name:'projectPaht'|'bran'|'replaceOlde'|'replaceNew';
-      data:Object
+      name?:'projectPaht'|'bran'|'replaceOlde'|'replaceNew';
+      data?:Object
     }
   }
   

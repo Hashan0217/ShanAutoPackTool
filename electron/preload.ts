@@ -7,8 +7,12 @@ contextBridge.exposeInMainWorld('electronAPI', {
     return filePaths.length > 0 ? filePaths[0] : '读取为空值或者无法读取手动收入';
   },
   //检查是否有项目配置文件
-  checkConfigFile: (projectPath) => {
-    return ipcRenderer.invoke('check-config-file',projectPath);
+  checkIsFlie: async (projectPath) => {
+    
+    return await ipcRenderer.invoke('checkIsFlie',projectPath);
+  },
+  writeContant: async (name,data) => {
+    return await ipcRenderer.invoke('writeContant',name,data);
   },
 
 });

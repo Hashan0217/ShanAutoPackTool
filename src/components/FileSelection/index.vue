@@ -19,7 +19,7 @@
 import { ref } from 'vue'
 import { Files } from '@element-plus/icons-vue'
 
-
+const model =defineModel()
 const input = ref('')
 
 // const fileInput = ref<HTMLInputElement | null>(null)
@@ -35,7 +35,9 @@ defineProps<
 
 const selcetFile = async () => {
     const folderPath = await window.electronAPI.pickFolder();
+    localStorage.setItem('projectPath', folderPath)
     input.value = folderPath;
+    model.value = folderPath;
     console.log('Selected Folder Path:', folderPath);
 }
 

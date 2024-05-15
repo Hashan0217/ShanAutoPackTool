@@ -27,9 +27,12 @@ app.whenReady().then(() => {
   ipcMain.handle("pick-folder", () => {
     return fileClassItem.getFilesPath();
   });
-  ipcMain.handle("check-config-file", (event, path) => {
+  ipcMain.handle("checkIsFlie", (event, path) => {
     console.log("path", path);
-    return fileClassItem.checkFile(path);
+    return fileClassItem.checkIsFlie(path);
+  });
+  ipcMain.handle("writeContant", (event, name, data) => {
+    return fileClassItem.writeFile(name, data);
   });
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0)

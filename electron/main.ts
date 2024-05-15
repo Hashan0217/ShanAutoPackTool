@@ -42,11 +42,18 @@ app.whenReady().then(() => {
     return fileClassItem.getFilesPath();
   });
 
- ipcMain.handle('check-config-file', (event, path) => {
+ ipcMain.handle('checkIsFlie', (event, path) => {
+ 
+  
   // 根据文件路径查询shanAutoConfig.json文件是否存在
   console.log("path", path);
   
-  return fileClassItem.checkFile(path);
+  return  fileClassItem.checkIsFlie(path);
+});
+
+ipcMain.handle('writeContant',  (event, name,data) => {
+  
+  return   fileClassItem.writeFile(name,data);
 });
 
 
